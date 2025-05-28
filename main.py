@@ -24,16 +24,16 @@ def process_dataset(
 ) -> datasets.Dataset:
     my_answers = []
     
-    for query, tools, answer in zip(ds["query"], ds["tools"], ds["answers"]):
+    for query, tools in zip(ds["query"], ds["tools"]):
         try:
             model_answer = call_server(query, tools, base_url)
-            print(f"answer\n {type(answer)} {answer} \nvs\n model_answer {type(model_answer)} \n {model_answer}")
+            print(f"\n model_answer {type(model_answer)} \n {model_answer}")
         except Exception as e:
             print(f"Error calling the server: {e}")
             answer = f"Error for query: {query}"
 
-        formatted_answer = answer
-        my_answers.append(formatted_answer)
+        # formatted_answer = answer
+        my_answers.append(model_answer)
 
     # you should add the new column 'my_answers' with the expected tool calls to the dataset
     return ds.add_column("my_answers", my_answers)
