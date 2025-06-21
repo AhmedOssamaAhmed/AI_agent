@@ -1,4 +1,4 @@
-# ellamind Coding Challenge
+# AI Agent (local)
 
 This project demonstrates a solution to the ellamind coding challenge, which involves serving and interacting with a local GGUF-based LLM using a simple client-server architecture.
 
